@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Visualization & Analysis Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            line-height: 1.8;
+            color: #1a1a1a;
+            background-color: #ffffff;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #0369a1 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            border-bottom: 3px solid #06b6d4;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .intro-section {
+            background: #ffffff;
+            border-radius: 0;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border: 1px solid #e0e7ff;
+        }
+
+        .intro-section h2 {
+            color: #1e3a8a;
+            font-size: 2em;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #0369a1;
+            padding-bottom: 10px;
+        }
+
+        .intro-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .intro-content > div h3 {
+            color: #0369a1;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .intro-content > div p {
+            font-size: 1em;
+            line-height: 1.8;
+            color: #334155;
+        }
+
+        .map-placeholder {
+            background: linear-gradient(135deg, #e0e0e0 0%, #f5f5f5 100%);
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            color: #999;
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .projects-section {
+            margin-top: 40px;
+        }
+
+        .projects-section h2 {
+            color: #1e3a8a;
+            font-size: 2em;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #0369a1;
+            padding-bottom: 10px;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .project-card {
+            background: #ffffff;
+            border-radius: 0;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #e0e7ff;
+        }
+
+        .project-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(3, 105, 161, 0.15);
+            border: 1px solid #0369a1;
+        }
+
+        .project-image {
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            background-color: #f0f0f0;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .project-content {
+            padding: 25px;
+        }
+
+        .project-content h3 {
+            color: #0369a1;
+            font-size: 1.5em;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .project-content p {
+            color: #334155;
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            line-height: 1.7;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #0369a1 0%, #06b6d4 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 0;
+            font-size: 0.9em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 1px solid #0369a1;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(3, 105, 161, 0.3);
+            background: linear-gradient(135deg, #06b6d4 0%, #0369a1 100%);
+        }
+
+        .btn-secondary {
+            background: #ffffff;
+            color: #0369a1;
+            border: 2px solid #0369a1;
+        }
+
+        .btn-secondary:hover {
+            background: linear-gradient(135deg, #0369a1 0%, #06b6d4 100%);
+            color: #ffffff;
+        }
+
+        .infographics-section {
+            background: #ffffff;
+            border-radius: 0;
+            padding: 40px;
+            margin-top: 40px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border: 1px solid #e0e7ff;
+        }
+
+        .infographics-section h2 {
+            color: #1e3a8a;
+            font-size: 2em;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #0369a1;
+            padding-bottom: 10px;
+        }
+
+        .infographic-item {
+            margin-bottom: 30px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .infographic-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .infographic-item h3 {
+            color: #0369a1;
+            font-size: 1.3em;
+            margin-bottom: 12px;
+        }
+
+        .infographic-item p {
+            color: #334155;
+            line-height: 1.8;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            .intro-content {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 10px;
+            }
+
+            .intro-section {
+                padding: 20px;
+            }
+
+            .infographics-section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Reed Bayless</h1>
+        <p>Data Visualization & Analysis Portfolio</p>
+        <p>Exploring Urban Dynamics Through Data</p>
+    </header>
+
+    <div class="container">
+        <!-- Introduction Section -->
+        <section class="intro-section">
+            <h2>About This Portfolio</h2>
+            
+            <div class="intro-content">
+                <div>
+                    <h3>Project Overview</h3>
+                    <p>
+                        This portfolio showcases a comprehensive collection of data visualization and analysis projects. 
+                        Each project demonstrates various analytical techniques, from demographic analysis and spatial visualization 
+                        to flow diagrams and urban patterns. The work combines quantitative data analysis with compelling visual narratives 
+                        to reveal insights about urban environments and human behavior patterns. These projects highlight the integration of 
+                        data science methodologies with storytelling to communicate complex information effectively.
+                    </p>
+                </div>
+                <div>
+                    <h3>Location Context</h3>
+                    <p>
+                        The studies presented in this portfolio focus on specific urban and geographical areas, analyzing patterns of 
+                        human activity, infrastructure, and demographic distributions. By examining these locations through various data lenses, 
+                        we uncover meaningful patterns that reflect economic activity, social dynamics, and spatial relationships. 
+                        The projects include localized demographic insights, movement patterns, and infrastructure analysis that provide 
+                        a complete picture of the areas under study.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="projects-section">
+            <h2>Featured Projects</h2>
+            
+            <div class="projects-grid">
+                <!-- Sankey Diagram Project -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="sankey.png" alt="Sankey Diagram">
+                    </div>
+                    <div class="project-content">
+                        <h3>Sankey Diagram</h3>
+                        <p>
+                            A comprehensive flow diagram visualization that illustrates the movement and transformation of data across different 
+                            categories. This visualization technique effectively shows the proportional flows and relationships between source 
+                            and destination points, providing insights into distribution patterns and resource allocation.
+                        </p>
+                        <div class="project-links">
+                            <a href="https://colab.research.google.com/drive/19mY4NmaJejlm7P9O1GVCp5aKp5P9764G?usp=sharing" class="btn" target="_blank">View Project</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- What's Happening in the Town Project -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="inthetown.png" alt="What's Happening in the Town">
+                    </div>
+                    <div class="project-content">
+                        <h3>What's Happening in the Town</h3>
+                        <p>
+                            An urban analysis project that captures real-time activity patterns within a specific town. This visualization 
+                            reveals where activity concentrates, movement patterns throughout the day, and identifies hotspots of economic 
+                            and social activity. Essential for understanding urban dynamics and planning.
+                        </p>
+                        <div class="project-links">
+                            <a href="https://colab.research.google.com/drive/1c9SppD_wxlmxgUVFzY9vhM6Flu_Zmfz1?usp=sharing" class="btn" target="_blank">View Project</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Grey Anatomy Project -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="greyanatomy.png" alt="Grey Anatomy">
+                    </div>
+                    <div class="project-content">
+                        <h3>Grey Anatomy</h3>
+                        <p>
+                            A detailed anatomical analysis project examining structure and composition. This comprehensive study breaks down 
+                            complex systems into their constituent parts, providing insights into organizational patterns, hierarchies, and 
+                            compositional distributions. An essential reference for understanding complex structures.
+                        </p>
+                        <div class="project-links">
+                            <a href="https://drive.google.com/drive/folders/16mXQvDk54uMBwmMoJRZQNqN1s43cPhTW?usp=drive_link" class="btn" target="_blank">View Project</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Happy Places Project -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="happy places.png" alt="Happy Places">
+                    </div>
+                    <div class="project-content">
+                        <h3>Happy Places</h3>
+                        <p>
+                            An exploratory analysis of locations and environments that correlate with positive experiences and well-being. 
+                            This project identifies spatial patterns and characteristics that contribute to human happiness and satisfaction, 
+                            examining factors such as accessibility, amenities, community presence, and environmental quality.
+                        </p>
+                        <div class="project-links">
+                            <a href="https://colab.research.google.com/drive/1GvaHVG-kvTLZCIY7_jlxvcjBWMWj8lcv?usp=sharing" class="btn" target="_blank">View Project</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Infographics and Narration Section -->
+        <section class="infographics-section">
+            <h2>Key Insights & Narration</h2>
+            
+            <div class="infographic-item">
+                <h3>Data Visualization Methodology</h3>
+                <p>
+                    Each project employs carefully selected visualization techniques to communicate data insights effectively. 
+                    From Sankey diagrams that show flow relationships, to heatmaps that reveal spatial patterns, these visualizations 
+                    are designed to make complex data intuitive and actionable. The choice of visualization type depends on the nature 
+                    of the data and the specific insights we want to communicate to our audience.
+                </p>
+            </div>
+
+            <div class="infographic-item">
+                <h3>Spatial Analysis and Urban Patterns</h3>
+                <p>
+                    Multiple projects in this portfolio utilize spatial analysis techniques to understand how activities and 
+                    populations distribute across geographic areas. By mapping data onto physical locations, we can identify 
+                    clusters, patterns, and anomalies that might not be apparent in tabular data. This geographical perspective 
+                    is crucial for urban planning, business strategy, and policy development.
+                </p>
+            </div>
+
+            <div class="infographic-item">
+                <h3>Flow and Movement Analysis</h3>
+                <p>
+                    The Sankey diagram project exemplifies how flow visualizations can reveal complex relationships and movements. 
+                    Whether tracking resource allocation, user journeys, or material flows, these diagrams show both the magnitude 
+                    and direction of movements, enabling stakeholders to understand distribution patterns and identify optimization 
+                    opportunities.
+                </p>
+            </div>
+
+            <div class="infographic-item">
+                <h3>Demographic and Behavioral Insights</h3>
+                <p>
+                    By analyzing demographic data and behavioral patterns, these projects reveal the composition and characteristics 
+                    of different populations and areas. Understanding who lives where, how they move, and where they congregate provides 
+                    essential context for business decisions, social policies, and urban development strategies.
+                </p>
+            </div>
+
+            <div class="infographic-item">
+                <h3>Well-being and Quality of Life Indicators</h3>
+                <p>
+                    The "Happy Places" project investigates the intersection of geography and well-being, exploring which locations 
+                    and characteristics correlate with higher satisfaction and quality of life. This research direction is increasingly 
+                    important as cities strive to improve livability and create environments where people can thrive.
+                </p>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024-2026 Data Visualization & Analysis Portfolio | All Rights Reserved</p>
+    </footer>
+</body>
+</html>
